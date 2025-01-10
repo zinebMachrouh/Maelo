@@ -1,0 +1,132 @@
+#library{
+  background-color: #11100E;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+
+  #main{
+    width: 100%;
+    padding: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    height: 90%;
+    gap: 0.7rem;
+    color: var(--isabelline);
+
+    header{
+      background-color: #1F1D1A;
+      width: 16%;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem 0.7rem;
+      gap: 1.8rem;
+
+      nav{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-radius: 10px;
+        background-color: #1F1D1A;
+        a{
+          color: var(--isabelline);
+          text-decoration: none;
+          padding: 0.5rem 0.8rem;
+          border-radius: 7px;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          transition: 0.3s;
+          &:hover{
+            background-color: #2F2D2A;
+          }
+          &.active{
+            background-color: #2F2D2A;
+          }
+        }
+      }
+
+      .collections{
+        border-top: 1px solid #3c3a37;
+        padding-top: 1.8rem;
+
+        .c-top{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          span:first-child{
+            i{
+              margin-right: 0.4rem;
+            }
+          }
+        }
+
+        .c-bottom{
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-top: 1rem;
+
+          .collection{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 7px;
+            transition: 0.3s;
+
+            &:hover{
+              .c-info{
+                span:first-child{
+                  text-decoration: underline;
+                  transition: all ease-in-out 0.3s;
+                }
+              }
+            }
+
+            .c-image{
+              width: 40px;
+              height: 40px;
+              overflow: hidden;
+              border-radius: 5px;
+              img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .c-info{
+              display: flex;
+              flex-direction: column;
+              gap: 0.2rem;
+
+              span:first-child{
+                font-weight: 500;
+              }
+              span:last-child{
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+                opacity: 0.4;
+              }
+            }
+          }
+        }
+      }
+    }
+    main{
+      background-color: #1F1D1A;
+      border-radius: 10px;
+      width: 84%;
+    }
+  }
+  #app-player{
+    width: 100% ;
+    height: 10%;
+    background-color: blue;
+  }
+}

@@ -1,0 +1,44 @@
+<section id="player">
+  <div class="player" *ngIf="track">
+    <img src="{{track.coverImage}}" alt="Track Image" class="p-img" />
+    <div class="p-info">
+      <span>{{ track.title }}</span>
+      <span>{{ track.artist }}</span>
+    </div>
+    <div class="p-track">
+      <div class="p-controls">
+        <button type="button"><i class="fa-solid fa-random"></i></button>
+        <button type="button" (click)="previousTrack()"><i class="fa-solid fa-backward-step"></i></button>
+        <button type="button" class="play" (click)="togglePlayPause()">
+          <i class="fa-solid" [ngClass]="isPlaying ? 'fa-pause' : 'fa-play'"></i>
+        </button>
+        <button type="button" (click)="nextTrack()"><i class="fa-solid fa-forward-step"></i></button>
+        <button type="button"><i class="fa-solid fa-retweet"></i></button>
+      </div>
+      <div class="p-progress">
+        <span>{{currentTimeFormatted}}</span>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          [value]="(currentTime / track.duration) * 100"
+          (input)="seek($event)"
+        />
+        <span>{{formatDuration(track.duration)}}</span>
+      </div>
+    </div>
+    <div class="p-volume">
+      <button type="button"><i class="fa-solid fa-volume-low"></i></button>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        [value]="volume"
+        (input)="changeVolume($event)"
+      />
+    </div>
+    <div class="p-details">
+      <button type="button" class="fa-solid fa-arrow-up-right-from-square"></button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<div class="app-track-card">
+  <div class="tc-card">
+    <div class="tc-id">
+      <span>{{index}}</span>
+      <button class="play-track" type="button" (click)="onPlay()">
+        <i class="fas fa-play"></i>
+      </button>
+    </div>
+    <div class="tc-info">
+      <img *ngIf="track.coverImage"  src="{{track.coverImage}}" alt="Track Image" />
+      <img src="assets/piano.jpg" alt="Image" *ngIf="!track.coverImage" />
+      <div class="tc-details">
+        <button type="button" (click)="onEdit()">{{track.title}}</button>
+        <span>{{track.artist}}</span>
+      </div>
+    </div>
+    <div class="tc-date">
+      <span>{{formatCreationDate(track.addedDate)}}</span>
+    </div>
+    <div class="tc-category">
+      <span>{{track.category}}</span>
+    </div>
+    <div class="tc-duration">
+      <span>{{formatDuration(track.duration)}}</span>
+      <button type="button" (click)="onDelete()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+  <div class="track-description">
+    <span>Description : {{track.description}}</span>
+  </div>
+</div>

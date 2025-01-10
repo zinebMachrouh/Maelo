@@ -1,0 +1,46 @@
+<section id="app-track-list">
+  <header>
+    <h4>Welcome back, Maelo! <br>
+      <span>{{tracksCount}} tracks for you</span>
+    </h4>
+
+    <div class="search">
+      <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <input type="text" placeholder="Search by title, artist or description..." [formControl]="searchControl">
+    </div>
+
+    <div class="h-actions">
+      <button type="button" routerLink="settings" title="settings"><i class="fa-solid fa-sliders"></i></button>
+      <button type="button" title="add track" (click)="openModal()"><i class="fa-solid fa-plus"></i></button>
+    </div>
+  </header>
+
+  <div class="categories">
+    <button
+      type="button"
+      [ngClass]="{'active': activeCategory === 'All'}"
+      (click)="getAllTracks()">All</button>
+    <div *ngFor="let category of musicCategories">
+      <button
+        type="button"
+        [ngClass]="{'active': activeCategory === category}"
+        (click)="filterByCategory(category)">{{ category }}</button>
+    </div>
+  </div>
+
+  <div class="tracks">
+    <div *ngIf="!tracks.length">
+      <p>No tracks found</p>
+    </div>
+    <div *ngFor="let track of tracks; let i = index">
+      <app-track-card [track]="track" [index]="i + 1" [editTrack]="editTrack.bind(this)" [deleteTrack]="deleteTrack.bind(this)" (playTrack)="onTrackPlay($event)"></app-track-card>
+    </div>
+  </div>
+</section>
+<app-track-form
+  [isVisible]="showModal"
+  [categories]="musicCategories"
+  [track]="selectedTrack"
+  (close)="onCloseModal()"
+  (save)="onSaveTrack($event.trackData, $event.audioFile, $event.coverImage)">
+</app-track-form>

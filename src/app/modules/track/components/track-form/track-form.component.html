@@ -1,0 +1,73 @@
+<div *ngIf="isVisible" class="modal-bg">
+  <div class="close">
+    <button (click)="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="modal">
+    <h2>{{ track ? 'Edit Track' : 'Add New Track' }}</h2>
+    <form [formGroup]="trackForm" (ngSubmit)="onSubmit()">
+      <!-- Title Field -->
+      <label>Title</label>
+      <input formControlName="title" type="text" required placeholder="Enter Title"/>
+      <div *ngIf="trackForm.get('title')?.touched && trackForm.get('title')?.invalid" class="text-danger">
+        <div *ngIf="trackForm.get('title')?.hasError('required')">Title is required.</div>
+        <div *ngIf="trackForm.get('title')?.hasError('minlength')">Title must be at least 3 characters long.</div>
+        <div *ngIf="trackForm.get('title')?.hasError('maxlength')">Title cannot be longer than 50 characters.</div>
+      </div>
+
+      <!-- Description Field -->
+      <label>Description</label>
+      <textarea formControlName="description" placeholder="Enter Description"></textarea>
+      <div *ngIf="trackForm.get('description')?.touched && trackForm.get('description')?.invalid" class="text-danger">
+        <div *ngIf="trackForm.get('description')?.hasError('minlength')">Description must be at least 3 characters long.</div>
+        <div *ngIf="trackForm.get('description')?.hasError('maxlength')">Description cannot be longer than 500 characters.</div>
+      </div>
+
+      <div class="group">
+        <div>
+          <!-- Artist Field -->
+          <label>Artist</label>
+          <input formControlName="artist" type="text" required placeholder="Enter Artist"/>
+          <div *ngIf="trackForm.get('artist')?.touched && trackForm.get('artist')?.invalid" class="text-danger">
+            <div *ngIf="trackForm.get('artist')?.hasError('required')">Artist is required.</div>
+            <div *ngIf="trackForm.get('artist')?.hasError('minlength')">Artist must be at least 3 characters long.</div>
+            <div *ngIf="trackForm.get('artist')?.hasError('maxlength')">Artist cannot be longer than 50 characters.</div>
+          </div>
+        </div>
+
+        <div>
+          <!-- Category Field -->
+          <label>Category</label>
+          <select formControlName="category" required>
+            <option value="" selected hidden>Pick Category</option>
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          </select>
+          <div *ngIf="trackForm.get('category')?.touched && trackForm.get('categoryId')?.invalid" class="text-danger">
+            Category is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Field -->
+      <label>Track Image</label>
+      <input formControlName="image" type="file" accept="image/*" (change)="onFileChange($event,'image')" required/>
+      <div *ngIf="trackForm.get('image')?.touched && trackForm.get('image')?.invalid" class="text-danger">
+        <div *ngIf="trackForm.get('image')?.hasError('required')">Image is required.</div>
+        <div *ngIf="trackForm.get('image')?.hasError('fileSize')">Image size must be less than 15MB.</div>
+      </div>
+
+      <!-- Audio Field -->
+      <label>Track Audio</label>
+      <input formControlName="audio" type="file" accept="audio/*" (change)="onFileChange($event, 'audio')" required/>
+      <div *ngIf="trackForm.get('audio')?.touched && trackForm.get('audio')?.invalid" class="text-danger">
+        <div *ngIf="trackForm.get('audio')?.hasError('required')">Audio is required.</div>
+        <div *ngIf="trackForm.get('audio')?.hasError('fileSize')">Audio size must be less than 15MB.</div>
+      </div>
+
+
+      <div class="actions">
+        <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+        <button type="submit" [disabled]="trackForm.invalid" [ngClass]="{ 'disabled-save': trackForm.invalid, 'save': !trackForm.invalid }">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
