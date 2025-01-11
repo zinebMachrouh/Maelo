@@ -147,3 +147,42 @@
     }
   }
 }
+
+
+@media screen and (max-width: 500px){
+  .app-track-card{
+    .tc-card{
+      .tc-id{
+        width: 10%;
+      }
+      .tc-info{
+        width: 50%;
+        img{
+          width: 40px;
+          height: 40px;
+        }
+        .tc-details{
+          button{
+            font-size: 0.9rem;
+          }
+          span{
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .tc-date{
+        display: none;
+      }
+      .tc-category{
+        display: none;
+      }
+      .tc-duration{
+        width:  40%;
+        justify-content: center;
+        padding-right: 0;
+        transition: none !important;
+
+      }
+    }
+  }
+}

@@ -53,6 +53,8 @@
       .collections{
         border-top: 1px solid #3c3a37;
         padding-top: 1.8rem;
+        overflow: hidden;
+
 
         .c-top{
           display: flex;
@@ -127,6 +129,50 @@
   #app-player{
     width: 100% ;
     height: 10%;
-    background-color: blue;
+  }
+}
+
+@media screen and (max-width: 500px){
+  header{
+    overflow: hidden;
+    gap: 1rem !important;
+    nav{
+      a{
+        gap: 2rem !important;
+      }
+    }
+
+    .collections{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 1rem !important;
+      .c-top{
+
+        span:first-child{
+          span{
+            display: none;
+          }
+          i{
+            margin-right: 0rem;
+          }
+        }
+        span:last-child{
+          display: none;
+        }
+      }
+
+      .c-bottom{
+        .collection{
+          .c-image{
+
+          }
+          .c-info{
+            display: none !important;
+          }
+        }
+      }
+    }
   }
 }

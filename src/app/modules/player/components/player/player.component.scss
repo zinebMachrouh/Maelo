@@ -160,3 +160,27 @@
     }
   }
 }
+
+
+@media screen and (max-width: 500px){
+  #player{
+    .player{
+      justify-content: space-between;
+      .p-info{
+        display: none;
+      }
+
+      .p-track{
+        width: 50%;
+      }
+
+      .p-volume{
+        width: 30%;
+      }
+
+      .p-details{
+        display: none;
+      }
+    }
+  }
+}

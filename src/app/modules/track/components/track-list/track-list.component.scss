@@ -144,3 +144,46 @@
     }
   }
 }
+
+@media screen and (max-width: 500px){
+  #app-track-list{
+    header{
+      h4{
+        font-size: 1rem;
+        span{
+          font-size: 0.8rem;
+        }
+      }
+
+      .search{
+        width: 45%;
+        input{
+          font-size: 0.9rem;
+          padding: 0.3rem;
+        }
+
+        button{
+          font-size: 0.9rem;
+          padding: 0.3rem;
+        }
+      }
+
+      .h-actions{
+        width: 40%;
+        button{
+          width: 35px;
+          height: 35px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .categories{
+      gap: 0.5rem;
+      button{
+        font-size: 0.9rem;
+        padding: 0.3rem 1rem;
+      }
+    }
+  }
+}
