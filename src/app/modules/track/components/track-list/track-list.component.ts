@@ -83,7 +83,7 @@ export class TrackListComponent implements OnInit {
   }
 
   deleteTrack(id: string): void {
-    from(this.trackService.deleteTrack(id)).subscribe({
+    confirm('Are you sure you want to delete this track?') && from(this.trackService.deleteTrack(id)).subscribe({
       next: () => {
         this.getAllTracks();
       },
