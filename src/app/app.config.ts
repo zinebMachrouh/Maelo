@@ -9,14 +9,22 @@ import {provideEffects} from "@ngrx/effects";
 import {PlayerEffects} from "./modules/player/store/player.effect";
 import {TracksEffects} from "./modules/track/store/track.effect";
 import {AppState} from "./app.state";
+import {HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient} from "@angular/common/http";
+import {authInterceptor} from "./modules/auth/interceptors/auth.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     provideRouter(routes),
     provideStore<AppState>({
       player: playerReducer,
-      tracks: tracksReducer
+      tracks: tracksReducer,
     }),
     provideEffects([PlayerEffects, TracksEffects]),
-  ]
+    {
+      provide: HTTP_INTERCEPTORS,
+      useValue: authInterceptor,
+      multi: true,
+    },
+  ],
 };
